@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String           @id @default(uuid())
+  email      String           @unique
+  firstname  String?
+  lastname   String?
+  pseudo     String
+  deezerApi  String?
+  spotifyApi String?
+  playlists  UserOnPlaylist[]
+  createdPlaylist   Playlist[]
+}
+
+model UserOnPlaylist {
+  user       User     @relation(fields: [userId], references: [id])
+  playlist   Playlist @relation(fields: [playlistId], references: [id])
+  userId     String
+  playlistId String
+
+  @@id([userId, playlistId])
+}
+
+model Playlist {
+  id          String           @id @default(uuid())
+  name        String
+  songs       Song[]
+  comments    Comment[]
+  users       UserOnPlaylist[]
+  createdBy   User             @relation(fields: [createdById], references: [id])
+  createdById String
+}
+
+model Song {
+  id         String    @id @default(uuid())
+  url        String
+  Playlist   Playlist? @relation(fields: [playlistId], references: [id])
+  playlistId String?
+}
+
+model Comment {
+  id         String    @id @default(uuid())
+  text       String
+  Playlist   Playlist? @relation(fields: [playlistId], references: [id])
+  playlistId String?
+}
