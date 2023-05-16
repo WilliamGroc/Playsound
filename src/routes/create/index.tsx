@@ -14,6 +14,7 @@ export const useCreateUser = routeAction$(
     firstname: z.string(),
     lastname: z.string(),
     email: z.string().email(),
+    pseudo: z.string()
   })
 );
 
@@ -24,8 +25,16 @@ export default component$(() => {
       <h1>Create User</h1>
       <Form action={createUserAction}>
         <label>
-          Name
-          <input name="name" value={createUserAction.formData?.get('name')} />
+          Pseudo
+          <input name="pseudo" value={createUserAction.formData?.get('pseudo')} />
+        </label>
+        <label>
+          First name
+          <input name="firstname" value={createUserAction.formData?.get('firstname')} />
+        </label>
+        <label>
+          Last name
+          <input name="lastname" value={createUserAction.formData?.get('lastname')} />
         </label>
         <label>
           Email
