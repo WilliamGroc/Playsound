@@ -2,25 +2,25 @@ lockfileVersion: '6.0'
 
 devDependencies:
   '@auth/core':
-    specifier: ^0.7.0
+    specifier: 0.7.0
     version: 0.7.0
   '@builder.io/qwik':
-    specifier: 1.0.0
-    version: 1.0.0(undici@5.22.0)
+    specifier: 1.1.3
+    version: 1.1.3(undici@5.22.0)
   '@builder.io/qwik-auth':
-    specifier: ~0.1.0
-    version: 0.1.0(@auth/core@0.7.0)(@builder.io/qwik-city@1.0.0)(@builder.io/qwik@1.0.0)
+    specifier: 0.1.0
+    version: 0.1.0(@auth/core@0.7.0)(@builder.io/qwik-city@1.1.3)(@builder.io/qwik@1.1.3)
   '@builder.io/qwik-city':
-    specifier: ^1.0.0
-    version: 1.0.0
+    specifier: 1.1.3
+    version: 1.1.3
   '@prisma/client':
-    specifier: 4.13.0
-    version: 4.13.0(prisma@4.13.0)
+    specifier: 4.14.0
+    version: 4.14.0(prisma@4.14.0)
   '@types/eslint':
     specifier: 8.37.0
     version: 8.37.0
   '@types/node':
-    specifier: ^18.16.1
+    specifier: 18.16.1
     version: 18.16.1
   '@typescript-eslint/eslint-plugin':
     specifier: 5.59.1
@@ -29,31 +29,31 @@ devDependencies:
     specifier: 5.59.1
     version: 5.59.1(eslint@8.39.0)(typescript@5.0.4)
   '@vanilla-extract/css':
-    specifier: ^1.11.0
+    specifier: 1.11.0
     version: 1.11.0
   autoprefixer:
-    specifier: ^10.4.14
+    specifier: 10.4.14
     version: 10.4.14(postcss@8.4.23)
   eslint:
     specifier: 8.39.0
     version: 8.39.0
   eslint-plugin-qwik:
-    specifier: 1.0.0
-    version: 1.0.0(eslint@8.39.0)
+    specifier: 1.1.3
+    version: 1.1.3(eslint@8.39.0)
   postcss:
-    specifier: ^8.4.23
+    specifier: 8.4.23
     version: 8.4.23
   prettier:
     specifier: 2.8.8
     version: 2.8.8
   prisma:
-    specifier: ^4.13.0
-    version: 4.13.0
+    specifier: 4.14.0
+    version: 4.14.0
   styled-vanilla-extract:
-    specifier: ^0.5.4
-    version: 0.5.4(@builder.io/qwik@1.0.0)(@types/node@18.16.1)(@vanilla-extract/css@1.11.0)(postcss@8.4.23)(vite@4.3.3)
+    specifier: 0.5.4
+    version: 0.5.4(@builder.io/qwik@1.1.3)(@types/node@18.16.1)(@vanilla-extract/css@1.11.0)(postcss@8.4.23)(vite@4.3.3)
   tailwindcss:
-    specifier: ^3.3.1
+    specifier: 3.3.1
     version: 3.3.1(postcss@8.4.23)
   typescript:
     specifier: 5.0.4
@@ -311,7 +311,7 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@builder.io/qwik-auth@0.1.0(@auth/core@0.7.0)(@builder.io/qwik-city@1.0.0)(@builder.io/qwik@1.0.0):
+  /@builder.io/qwik-auth@0.1.0(@auth/core@0.7.0)(@builder.io/qwik-city@1.1.3)(@builder.io/qwik@1.1.3):
     resolution: {integrity: sha512-uwwVbam6yQs9evtmof/+SpRT7DzoxD+2DSwsndGcm9JBU4Sh1xMyzll6F9QbivKVboglx+4X05OzJG7QTttWMQ==}
     engines: {node: '>=16.8.0 <18.0.0 || >=18.11'}
     peerDependencies:
@@ -320,12 +320,12 @@ packages:
       '@builder.io/qwik-city': '>=0.6.0'
     dependencies:
       '@auth/core': 0.7.0
-      '@builder.io/qwik': 1.0.0(undici@5.22.0)
-      '@builder.io/qwik-city': 1.0.0
+      '@builder.io/qwik': 1.1.3(undici@5.22.0)
+      '@builder.io/qwik-city': 1.1.3
     dev: true
 
-  /@builder.io/qwik-city@1.0.0:
-    resolution: {integrity: sha512-nHlDsvYHRWpSmRgg3bb93shn0p1OeMLvBYyIINitGDPxRSK1RyddtJXFAE24MlEEwzetF82xSte3SiC55oPUaQ==}
+  /@builder.io/qwik-city@1.1.3:
+    resolution: {integrity: sha512-vxn3p/mfOHEvoGtZfWpFy4FfkO/06AyBqdpi7cZVVidlzisDHwwjRe5T2V1zc3WKoOY3oCSze2G3PUFOc2sq/g==}
     engines: {node: '>=16.8.0 <18.0.0 || >=18.11'}
     dependencies:
       '@mdx-js/mdx': 2.3.0
@@ -337,8 +337,8 @@ packages:
       - supports-color
     dev: true
 
-  /@builder.io/qwik@1.0.0(undici@5.22.0):
-    resolution: {integrity: sha512-U1eTIKTBUiW2dbPMCaTzS7K1bMCI9ovtfsvdduwnVThGXRSrX+v2X4U/UmHHPzfOjC55X5wYLc17cw5EwFBVVA==}
+  /@builder.io/qwik@1.1.3(undici@5.22.0):
+    resolution: {integrity: sha512-v1mhzFmCCmBsVPUndr5SExCcqkqbJBC+A/rQblHMQTJPhHdZTYLwsJqKqme2/vV8S/Krwj67xDVFHiHlDk6ifQ==}
     engines: {node: '>=16.8.0 <18.0.0 || >=18.11'}
     hasBin: true
     peerDependencies:
@@ -887,8 +887,8 @@ packages:
     resolution: {integrity: sha512-dhPeilub1NuIG0X5Kvhh9lH4iW3ZsHlnzwgwbOlgwQ2wG1IqFzsgHqmKPk3WzsdWAeaxKJxgM0+W433RmN45GA==}
     dev: true
 
-  /@prisma/client@4.13.0(prisma@4.13.0):
-    resolution: {integrity: sha512-YaiiICcRB2hatxsbnfB66uWXjcRw3jsZdlAVxmx0cFcTc/Ad/sKdHCcWSnqyDX47vAewkjRFwiLwrOUjswVvmA==}
+  /@prisma/client@4.14.0(prisma@4.14.0):
+    resolution: {integrity: sha512-MK/XaA2sFdfaOa7I9MjNKz6dxeIEdeZlnpNRoF2w3JuRLlFJLkpp6cD3yaqw2nUUhbrn3Iqe3ZpVV+VuGGil7Q==}
     engines: {node: '>=14.17'}
     requiresBuild: true
     peerDependencies:
@@ -897,16 +897,16 @@ packages:
       prisma:
         optional: true
     dependencies:
-      '@prisma/engines-version': 4.13.0-50.1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
-      prisma: 4.13.0
+      '@prisma/engines-version': 4.14.0-67.d9a4c5988f480fa576d43970d5a23641aa77bc9c
+      prisma: 4.14.0
     dev: true
 
-  /@prisma/engines-version@4.13.0-50.1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a:
-    resolution: {integrity: sha512-fsQlbkhPJf08JOzKoyoD9atdUijuGBekwoOPZC3YOygXEml1MTtgXVpnUNchQlRSY82OQ6pSGQ9PxUe4arcSLQ==}
+  /@prisma/engines-version@4.14.0-67.d9a4c5988f480fa576d43970d5a23641aa77bc9c:
+    resolution: {integrity: sha512-3jum8/YSudeSN0zGW5qkpz+wAN2V/NYCQ+BPjvHYDfWatLWlQkqy99toX0GysDeaUoBIJg1vaz2yKqiA3CFcQw==}
     dev: true
 
-  /@prisma/engines@4.13.0:
-    resolution: {integrity: sha512-HrniowHRZXHuGT9XRgoXEaP2gJLXM5RMoItaY2PkjvuZ+iHc0Zjbm/302MB8YsPdWozAPHHn+jpFEcEn71OgPw==}
+  /@prisma/engines@4.14.0:
+    resolution: {integrity: sha512-PDNlhP/1vyTgmNyiucGqGCdXIp7HIkkvKO50si3y3PcceeHvqtiKPaH1iJdz63jCWMVMbj2MElSxXPOeBvEVIQ==}
     requiresBuild: true
     dev: true
 
@@ -1676,8 +1676,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-plugin-qwik@1.0.0(eslint@8.39.0):
-    resolution: {integrity: sha512-IdnMPpVMEkL/QqBEypitdEpKCZWqeu+DSfJi39FGxnCvzsKTAKGv38Ro/+AEfHgYaAV0CH3sxLzxrr05tlG3+g==}
+  /eslint-plugin-qwik@1.1.3(eslint@8.39.0):
+    resolution: {integrity: sha512-afXDL5O/6bumoGAZ81bI/QYQnhwqILGCZXf+/LsT31x++5xtNMeFRcqOdQOV97iEFwm25PruklB9OhqzaQoYjA==}
     engines: {node: '>=16'}
     peerDependencies:
       eslint: '>= 8'
@@ -3154,13 +3154,13 @@ packages:
     resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
     dev: true
 
-  /prisma@4.13.0:
-    resolution: {integrity: sha512-L9mqjnSmvWIRCYJ9mQkwCtj4+JDYYTdhoyo8hlsHNDXaZLh/b4hR0IoKIBbTKxZuyHQzLopb/+0Rvb69uGV7uA==}
+  /prisma@4.14.0:
+    resolution: {integrity: sha512-+5dMl1uxMQb4RepndY6AwR9xi1cDcaGFICu+ws6/Nmgt93mFPNj8tYxSfTdmfg+rkNrUId9rk/Ac2vTgLe/oXA==}
     engines: {node: '>=14.17'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 4.13.0
+      '@prisma/engines': 4.14.0
     dev: true
 
   /property-information@6.2.0:
@@ -3413,7 +3413,7 @@ packages:
       inline-style-parser: 0.1.1
     dev: true
 
-  /styled-vanilla-extract@0.5.4(@builder.io/qwik@1.0.0)(@types/node@18.16.1)(@vanilla-extract/css@1.11.0)(postcss@8.4.23)(vite@4.3.3):
+  /styled-vanilla-extract@0.5.4(@builder.io/qwik@1.1.3)(@types/node@18.16.1)(@vanilla-extract/css@1.11.0)(postcss@8.4.23)(vite@4.3.3):
     resolution: {integrity: sha512-BkSmO7VmIPZLpO7aWgHmsBvex9YWoW1CiMfafARGzhRRzECUqTSHCQut+bGLk1mZowBPAIQInjS9jZPHUS55qg==}
     engines: {node: '>=15.0.0'}
     peerDependencies:
@@ -3428,7 +3428,7 @@ packages:
       postcss-load-config:
         optional: true
     dependencies:
-      '@builder.io/qwik': 1.0.0(undici@5.22.0)
+      '@builder.io/qwik': 1.1.3(undici@5.22.0)
       '@vanilla-extract/css': 1.11.0
       '@vanilla-extract/integration': 6.2.1(@types/node@18.16.1)
       outdent: 0.8.0

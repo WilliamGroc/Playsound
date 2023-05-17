@@ -6,8 +6,7 @@ export default component$(() => {
   const signIn = useAuthSignin();
   const signOut = useAuthSignout();
   const session = useAuthSession();
-
-  console.log(session.value)
+  console.log('header', session.value?.userId)
 
   return (
     <Header>
@@ -25,7 +24,7 @@ export default component$(() => {
               </HeaderLink>
             </li>
             : <li>
-              <HeaderLink onClick$={() => signIn.submit({ providerId: 'github', options: { callbackUrl: 'http://localhost:5173' } })}>
+              <HeaderLink onClick$={() => signIn.submit({ providerId: 'credentials', options: { callbackUrl: '/' } })}>
                 Login
               </HeaderLink>
             </li>

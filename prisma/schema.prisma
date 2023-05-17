@@ -11,15 +11,16 @@ datasource db {
 }
 
 model User {
-  id         String           @id @default(uuid())
-  email      String           @unique
-  firstname  String?
-  lastname   String?
-  pseudo     String
-  deezerApi  String?
-  spotifyApi String?
-  playlists  UserOnPlaylist[]
-  createdPlaylist   Playlist[]
+  id              String           @id @default(uuid())
+  email           String           @unique
+  firstname       String?
+  lastname        String?
+  pseudo          String
+  password        String
+  deezerApi       String?
+  spotifyApi      String?
+  playlists       UserOnPlaylist[]
+  createdPlaylist Playlist[]
 }
 
 model UserOnPlaylist {

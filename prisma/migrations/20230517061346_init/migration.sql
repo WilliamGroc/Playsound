@@ -5,6 +5,7 @@ CREATE TABLE "User" (
     "firstname" TEXT,
     "lastname" TEXT,
     "pseudo" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
     "deezerApi" TEXT,
     "spotifyApi" TEXT
 );
