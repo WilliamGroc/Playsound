@@ -2,6 +2,7 @@ import { serverAuth$ } from '@builder.io/qwik-auth';
 import CredentialsProvider from '@auth/core/providers/credentials';
 import type { Provider } from '@auth/core/providers';
 import { PrismaClient } from '@prisma/client';
+import { JWT } from '@auth/core/jwt';
 
 const prisma = new PrismaClient();
 
@@ -10,10 +11,10 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } = serv
     secret: env.get('AUTH_SECRET'),
     trustHost: true,
     callbacks: {
-      jwt({ token, user }) {
+      jwt({ token, user }: { token: JWT, user: any }) {
         return { ...token, userId: user?.id || token.userId }
       },
-      session(params) {
+      session(params: any) {
         return { ...params.session, userId: params.token.userId };
       }
     },
@@ -21,8 +22,8 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } = serv
       CredentialsProvider({
         name: "Login",
         credentials: {
-          email: { label: "Email", type: "text", placeholder: "email" },
-          password: { label: "Password", type: "password" }
+          email: { label: 'Email' },
+          password: { label: 'Password', type: 'password' },
         },
         async authorize(credentials) {
           if (credentials.email && credentials.password) {
@@ -34,13 +35,7 @@ export const { onRequest, useAuthSession, useAuthSignin, useAuthSignout } = serv
             });
 
             if (!user) {
-              user = await prisma.user.create({
-                data: {
-                  email: credentials.email as string,
-                  pseudo: credentials.email as string,
-                  password: credentials.password as string
-                }
-              });
+              return null;
             }
 
             return user

@@ -1,10 +1,11 @@
 import { component$, Slot, useStyles$ } from '@builder.io/qwik';
 import { routeLoader$ } from '@builder.io/qwik-city';
 
-import Header from '~/components/header/header';
-import Footer from '~/components/footer/footer';
+import Header from '~/components/header';
+import Footer from '~/components/footer';
 
 import styles from './styles.css?inline';
+import ToasterProvider from '~/context/toaster/toaster.context';
 
 export const useServerTimeLoader = routeLoader$(() => {
   return {
@@ -18,7 +19,9 @@ export default component$(() => {
     <>
       <Header />
       <main>
-        <Slot />
+        <ToasterProvider>
+          <Slot />
+        </ToasterProvider>
       </main>
       <Footer />
     </>

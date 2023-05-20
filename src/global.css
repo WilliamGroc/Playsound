@@ -62,3 +62,19 @@ body {
   padding: 0;
   line-height: inherit;
 }
+
+input {
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+label {
+  margin: 4px 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+label > input {
+  margin-top: 4px;
+}
