@@ -44,7 +44,12 @@ model Playlist {
 
 model Song {
   id         String    @id @default(uuid())
-  url        String
+  title      String
+  artist     String
+  duration   Int
+  link       String
+  preview    String
+  deezerId   Int
   Playlist   Playlist? @relation(fields: [playlistId], references: [id])
   playlistId String?
 }
