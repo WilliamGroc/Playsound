@@ -49,7 +49,7 @@ model Song {
   duration   Int
   link       String
   preview    String
-  deezerId   Int
+  deezerId   String
   Playlist   Playlist? @relation(fields: [playlistId], references: [id])
   playlistId String?
 }
