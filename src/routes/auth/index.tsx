@@ -1,9 +1,9 @@
 import { component$ } from "@builder.io/qwik";
 import { routeAction$, z, zod$ } from "@builder.io/qwik-city";
 import { PrismaClient } from "@prisma/client";
-import { Button } from "~/components/button/index.css";
+import Login from "~/components/login";
 import Register from "~/components/register";
-import { useAuthSignin } from "../plugin@auth";
+import passport, { localStrategy } from '~/routes/plugin@auth';
 
 export const useCreateUser = routeAction$(
   async (data) => {
@@ -22,14 +22,35 @@ export const useCreateUser = routeAction$(
   })
 );
 
+export const useAuthSignin = routeAction$(
+  async (data, context) => {
+    return new Promise((resolve, reject) => {
+      passport.authenticate(localStrategy, (error: any, user: any) => {
+        if (error) {
+          console.log({ error });
+          reject({ error });
+        }
+
+        context.cookie.set('user', user, { path: '/', sameSite: 'strict' });
+
+        context.redirect(301, '/');
+
+        resolve(true);
+      })({ ...context.request, body: data }, context);
+    });
+  },
+  zod$({
+    email: z.string().email(),
+    password: z.string()
+  })
+)
+
 export default component$(() => {
   const signIn = useAuthSignin();
   const createUserAction = useCreateUser();
 
   return <div class="flex justify-center items-center">
-    <section class="container container-purple flex justify-center">
-      <Button onClick$={() => signIn.submit({ providerId: 'credentials', options: { callbackUrl: '/' } })}>Login</Button>
-    </section>
+    <Login handleLogin={signIn} />
     <Register handleRegister={createUserAction} />
   </div>
 })

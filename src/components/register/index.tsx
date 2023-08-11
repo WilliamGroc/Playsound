@@ -31,7 +31,7 @@ export default component$(({ handleRegister }: Props) => {
           Email
           <input name="email" type="email" />
         </label>
-        <Button type="submit">Create</Button>
+        <Button type="submit">Submit</Button>
       </Form>
     </section>
   );

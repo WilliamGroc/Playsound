@@ -1,13 +1,13 @@
 import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
-import { useAuthSession, useAuthSignout } from '~/routes/plugin@auth';
 import { Header, HeaderLink, Logo } from './index.css';
+import { useSignOut, useUserSession } from '~/routes/layout';
 
 export default component$(() => {
-  const signOut = useAuthSignout();
-  const session = useAuthSession();
+  const signOut = useSignOut();
+  const session = useUserSession();
 
-  const isConnected = !!session.value;
+  const isConnected = !!session.value.user;
 
   return (
     <Header>
@@ -27,7 +27,7 @@ export default component$(() => {
               </Link>
             </div>
             <div>
-              <HeaderLink onClick$={() => signOut.submit({ callbackUrl: '/' })}>
+              <HeaderLink onClick$={() => signOut.submit()}>
                 Logout
               </HeaderLink>
             </div>
