@@ -13,7 +13,7 @@ export default component$(() => {
     <Header>
       <div class="flex justify-between">
         <Logo>
-          <a href="/" title="Playsound home">
+          <a href="/" class="text-white" title="Playsound home">
             Playsound
           </a>
         </Logo>
@@ -33,9 +33,9 @@ export default component$(() => {
             </div>
           </> :
             <div>
-              <Link href="/auth">
+              <Link href="/auth/signin">
                 <HeaderLink>
-                  Login
+                  Signin
                 </HeaderLink>
               </Link>
             </div>

@@ -20,8 +20,13 @@
   --qwik-light-purple: #ac7ff4;
   --qwik-dark-purple: #713fc2;
   --qwik-dirty-black: #1d2033;
-  --qwik-dark-background: #151934;
+  --qwik-dark-background: #4e4e4e;
   --qwik-dark-text: #ffffff;
+
+  --color-primary: #618264;
+  --color-secondary: #79AC78;
+  --color-ter: #B0D9B1;
+  --color-light: #D0E7D2;
 }
 
 html {

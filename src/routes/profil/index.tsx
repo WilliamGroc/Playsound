@@ -1,13 +1,12 @@
 import { component$, useContext, useTask$ } from "@builder.io/qwik";
 import { Form, routeAction$, routeLoader$ } from "@builder.io/qwik-city";
-import { PrismaClient } from "@prisma/client";
 import { Button } from "~/components/button/index.css";
 import { ToasterColor, ToasterContext } from "~/context/toaster/toaster.context";
+import prisma from '~/service/prisma';
 
 const userLoader = routeLoader$(async (request) => {
-  const prismaClient = new PrismaClient();
   const id = request.sharedMap.get('session').userId;
-  const user = await prismaClient.user.findFirst({
+  const user = await prisma.user.findFirst({
     where: { id }
   })
 
@@ -24,10 +23,9 @@ const userLoader = routeLoader$(async (request) => {
 })
 
 const editUserAction = routeAction$(async (data, request) => {
-  const prismaClient = new PrismaClient();
   const id = request.sharedMap.get('session').userId;
 
-  await prismaClient.user.update({
+  await prisma.user.update({
     data,
     where: { id }
   });

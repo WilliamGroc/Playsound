@@ -1,18 +1,19 @@
 import { styled } from 'styled-vanilla-extract/qwik';
 
 export const HeaderLink = styled.button`
-  background-color: #713fc2;
+  background-color: var(--color-primary);
   padding: 16px;
   border-radius: 0;
-
+  color: white;
+  
   &:hover{
-    background-color: #ac7ff4;
+    background-color: var(--color-secondary);
   }
-
-`;
+  
+  `;
 
 export const Header = styled.header`
-  background-color: #48287a;
+  background-color: var(--color-primary);
 `;
 
 

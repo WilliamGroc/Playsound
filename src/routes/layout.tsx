@@ -47,15 +47,15 @@ export const useSignOut = routeAction$((_, context) => {
 export default component$(() => {
   useStyles$(styles);
   return (
-    <>
+    <div class="flex flex-col h-full">
       <Header />
-      <main>
+      <main class="flex justify-center flex-1">
         <ToasterProvider>
           <Slot />
         </ToasterProvider>
       </main>
       <Footer />
-    </>
+    </div>
   );
 });
 
