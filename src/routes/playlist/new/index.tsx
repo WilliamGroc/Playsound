@@ -1,13 +1,12 @@
 import { component$, useTask$ } from "@builder.io/qwik";
 import { Form, routeAction$, useNavigate } from "@builder.io/qwik-city";
-import { PrismaClient } from "@prisma/client";
 import { Button } from "~/components/button/index.css";
+import prisma from '~/service/prisma';
 
 export const useCreatePlaylistAction = routeAction$(async (data, request) => {
-  const prismaClient = new PrismaClient();
   const id = request.sharedMap.get('session').userId;
 
-  const newPlaylist = await prismaClient.playlist.create({
+  const newPlaylist = await prisma.playlist.create({
     data: {
       name: data.name.toString(),
       createdBy: {

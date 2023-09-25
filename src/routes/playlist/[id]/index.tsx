@@ -1,16 +1,16 @@
-import { component$, useStore, useTask$, $, QwikChangeEvent, useSignal } from "@builder.io/qwik";
+import { component$, useStore, $, QwikChangeEvent } from "@builder.io/qwik";
 import { routeAction$, routeLoader$, server$ } from "@builder.io/qwik-city";
-import { PrismaClient, Song } from "@prisma/client";
+import { Song } from "@prisma/client";
 import axios from "axios";
 import { Button } from "~/components/button/index.css";
 import { DeezerSong } from "~/models/deezerSong.model";
+import prisma from '~/service/prisma';
 
 export const usePlaylistLoader = routeLoader$(async (request) => {
-  const prismaClient = new PrismaClient();
 
   const playlistId = request.params['id'];
 
-  const playlist = await prismaClient.playlist.findFirst({
+  const playlist = await prisma.playlist.findFirst({
     where: {
       id: playlistId
     },
@@ -31,7 +31,6 @@ export const usePlaylistSaveAction = routeAction$(async (formdata, request) => {
 export const addSongToPlaylist = server$(async function (songToAdd: DeezerSong) {
   if (this.params['id']) {
 
-    const prismaClient = new PrismaClient();
 
     const song: Omit<Song, 'id'> = {
       deezerId: String(songToAdd.id),
@@ -43,7 +42,7 @@ export const addSongToPlaylist = server$(async function (songToAdd: DeezerSong) 
       playlistId: this.params['id']
     }
 
-    const newSong = await prismaClient.song.create({ data: song });
+    const newSong = await prisma.song.create({ data: song });
     return newSong;
   }
 });

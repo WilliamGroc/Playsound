@@ -1,16 +1,15 @@
 import { component$ } from '@builder.io/qwik';
 import { Link, routeLoader$ } from '@builder.io/qwik-city';
-import { PrismaClient } from '@prisma/client';
 import { Button } from '~/components/button/index.css';
 import PlaylistTile from '~/components/playlistTile';
 import { useUserSession } from './layout';
+import prisma from '~/service/prisma';
 
 export const playlistLoader = routeLoader$(async (request) => {
-  const prismaClient = new PrismaClient();
   const id = request.sharedMap.get('user')?.id;
 
   if (id) {
-    const data = await prismaClient.playlist.findMany({
+    const data = await prisma.playlist.findMany({
       where: {
         OR: [
           {
