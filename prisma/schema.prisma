@@ -46,6 +46,7 @@ model Song {
   id         String    @id @default(uuid())
   title      String
   artist     String
+  cover      String?
   duration   Int
   link       String
   preview    String

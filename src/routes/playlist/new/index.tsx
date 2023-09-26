@@ -1,10 +1,11 @@
 import { component$, useTask$ } from "@builder.io/qwik";
 import { Form, routeAction$, useNavigate } from "@builder.io/qwik-city";
 import { Button } from "~/components/button/index.css";
+import { Input } from "~/components/input/index.css";
 import prisma from '~/service/prisma';
 
 export const useCreatePlaylistAction = routeAction$(async (data, request) => {
-  const id = request.sharedMap.get('session').userId;
+  const id = request.sharedMap.get('user').id;
 
   const newPlaylist = await prisma.playlist.create({
     data: {
@@ -37,11 +38,11 @@ export default component$(() => {
 
   return <div class="container">
     <Form action={createPlaylistAction} class="flex flex-col">
+      <Button class="mb-3 w-52">Create playlist</Button>
       <label>
         Name
-        <input name="name" />
+        <Input name="name" />
       </label>
-      <Button>Create playlist</Button>
     </Form>
   </div>
 })

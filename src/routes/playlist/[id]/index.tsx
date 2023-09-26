@@ -3,6 +3,8 @@ import { routeAction$, routeLoader$, server$ } from "@builder.io/qwik-city";
 import { Song } from "@prisma/client";
 import axios from "axios";
 import { Button } from "~/components/button/index.css";
+import { Input } from "~/components/input/index.css";
+import SongCard from "~/components/song-card";
 import { DeezerSong } from "~/models/deezerSong.model";
 import prisma from '~/service/prisma';
 
@@ -28,17 +30,12 @@ export const usePlaylistSaveAction = routeAction$(async (formdata, request) => {
   console.log(formdata);
 });
 
-export const addSongToPlaylist = server$(async function (songToAdd: DeezerSong) {
+export const addSongToPlaylist = server$(async function (songToAdd: Song) {
   if (this.params['id']) {
 
 
     const song: Omit<Song, 'id'> = {
-      deezerId: String(songToAdd.id),
-      title: songToAdd.title,
-      artist: songToAdd.artist.name,
-      link: songToAdd.link,
-      duration: songToAdd.duration,
-      preview: songToAdd.preview,
+      ...songToAdd,
       playlistId: this.params['id']
     }
 
@@ -51,12 +48,23 @@ export default component$(() => {
   const playlistLoaded = usePlaylistLoader();
 
   const playlist = useStore<Song[]>(playlistLoaded.value?.songs || []);
-  const searchedSongs = useStore<DeezerSong[]>([]);
+  const searchedSongs = useStore<Song[]>([]);
   const selectedSong = useStore<{ song: Song | null }>({ song: null });
 
   const searchSong = $(async (event: QwikChangeEvent<HTMLInputElement>) => {
     const { data: { songs: { data } } } = await axios.get(`/api/songs/${event.target.value}`);
-    searchedSongs.splice(0, searchedSongs.length, ...data);
+
+    const songs: Song[] = data.map((song: DeezerSong) => ({
+      deezerId: String(song.id),
+      title: song.title,
+      artist: song.artist.name,
+      link: song.link,
+      duration: song.duration,
+      preview: song.preview,
+      cover: song.album.cover
+    }));
+
+    searchedSongs.splice(0, searchedSongs.length, ...songs);
   });
 
   const selectSong = $((song: Song) => {
@@ -66,30 +74,26 @@ export default component$(() => {
     });
   });
 
+  const addSong = $(async (song: Song) => {
+    const newSong = await addSongToPlaylist(song);
+    if (newSong)
+      playlist.push(newSong);
+  })
+
   return <div class="container">
     <h1>
       {playlistLoaded.value?.name}
     </h1>
     <div class="flex">
       <div class="flex-1">
-        <input type="text" onChange$={searchSong} placeholder="Search song" class="mb-3" />
+        <Input type="text" onChange$={searchSong} placeholder="Search song" class="mb-3 w-full" />
         <ul class="overflow-auto">
-          {searchedSongs.map(song => <li key={song.id}><button onClick$={async () => {
-            const newSong = await addSongToPlaylist(song);
-            if (newSong)
-              playlist.push(newSong);
-          }}>+</button> {song.artist.name} - {song.title}</li>)}
+          {searchedSongs.map(song => <SongCard song={song} handleClick={addSong} />)}
         </ul>
       </div>
       <div class="flex-1">
         <ul>
-          {playlist.map(song => <li
-            key={song.id}
-            onClick$={() => selectSong(song)}
-            class="cursor-pointer"
-          >
-            {song.artist} - {song.title}
-          </li>)}
+          {playlist.map(song => <SongCard song={song} handleClick={selectSong} />)}
         </ul>
       </div>
       <div class="flex-1">
