@@ -6,7 +6,7 @@ settings:
 
 dependencies:
   '@prisma/client':
-    specifier: ^5.3.1
+    specifier: 5.3.1
     version: 5.3.1(prisma@5.3.1)
   '@qwikest/icons':
     specifier: 0.0.8
@@ -29,9 +29,6 @@ dependencies:
   passport-local:
     specifier: 1.0.0
     version: 1.0.0
-  prisma:
-    specifier: ^5.3.1
-    version: 5.3.1
   sharp:
     specifier: ^0.32.6
     version: 0.32.6
@@ -88,6 +85,9 @@ devDependencies:
   prettier:
     specifier: 3.0.1
     version: 3.0.1
+  prisma:
+    specifier: 5.3.1
+    version: 5.3.1
   styled-vanilla-extract:
     specifier: 0.5.4
     version: 0.5.4(@builder.io/qwik@1.2.12)(@types/node@20.6.2)(@vanilla-extract/css@1.12.0)(postcss@8.4.27)(vite@4.4.8)
@@ -954,7 +954,6 @@ packages:
   /@prisma/engines@5.3.1:
     resolution: {integrity: sha512-6QkILNyfeeN67BNEPEtkgh3Xo2tm6D7V+UhrkBbRHqKw9CTaz/vvTP/ROwYSP/3JT2MtIutZm/EnhxUiuOPVDA==}
     requiresBuild: true
-    dev: false
 
   /@qwikest/icons@0.0.8(@builder.io/qwik@1.2.12):
     resolution: {integrity: sha512-H5bD/UtAXbP8dsZEfmWmLuySS9bZIdlamxKiIeztgf4EtJEuBGB7c0aG3ZZ8FDRGKRvOS2bOy5CRSc97viiWGA==}
@@ -4078,7 +4077,6 @@ packages:
     requiresBuild: true
     dependencies:
       '@prisma/engines': 5.3.1
-    dev: false
 
   /property-information@6.3.0:
     resolution: {integrity: sha512-gVNZ74nqhRMiIUYWGQdosYetaKc83x8oT41a0LlV3AAFCAZwCpg4vmGkq8t34+cUhp3cnM4XDiU/7xlgK7HGrg==}
